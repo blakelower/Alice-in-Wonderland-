@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="bork.css" rel="stylesheet" type="text/css" />
+      <style>
+body {
+    background: #99aacc;
+}
+
+.clock {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #0077ee;
+    font-size: 60px;
+    font-family: cursive;
+
+}
+#title{
+    font-size: 60px;
+    color: #2277aa;
+    font-family: cursive;
+    overflow: hidden;
+  	letter-spacing: 2px;
+ 	animation: typing 5s steps(30, end), blink .75s step-end infinite;
+    white-space: nowrap;
+    font-size: 50px;
+    font-weight: 700;
+    border-right: 4px solid orange;
+    box-sizing: border-box;
+}
+
+@keyframes typing {
+    from { 
+        width: 0% 
+    }
+    to { 
+        width: 100% 
+    }
+}
+
+@keyframes blink {
+    from, to { 
+        border-color: transparent 
+    }
+    50% { 
+        border-color: orange; 
+    }
+}
+
+#second{
+    font-size: 40px;
+    color: #995588;
+    font-family: cursive;
+  	overflow: hidden;
+  	letter-spacing: 2px;
+ 	animation: typing 5s steps(30, end), blink .75s step-end infinite;
+    white-space: nowrap;
+    font-size: 30px;
+    font-weight: 700;
+    border-right: 4px solid orange;
+    box-sizing: border-box;
+}
+
+@keyframes typing {
+    from { 
+        width: 0% 
+    }
+    to { 
+        width: 100% 
+    }
+}
+
+@keyframes blink {
+    from, to { 
+        border-color: transparent 
+    }
+    50% { 
+        border-color: #990088; 
+    }
+}
+#alignright{
+       position: absolute;
+       right: 0;
+       bottom: 0;
+      
+}
+#alignleft{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+ }
+#click{
+     color: #887788;
+     border: 1px solid #aaa;
+     position: sticky;
+     width: 300px;
+     height: 100px;
+     left: 50%;
+     right: 100%;
+     margin-left: -100px;
+     padding: 50px 30px 70px;
+     box-sizing: border-box;
+     text-align: center;
+     font-size: 45px; 
+     font-family: cursive;
+}
+button{
+     width: 50px;
+     height: 50px;
+     text-align: center;
+     border: solid;
+     padding: 2%;
+     background: #661166;
+     box-sizing: border-box;
+     margin-top: 100px;
+     margin-right: 40px;
+}    
+#form{
+    position: sticky;
+    width: 300px;
+    height: 100px;
+    left: 40%;
+    margin-left: -100px;
+    padding: 50px 30px 70px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 100px;
+    margin-right:  30px;
+    color: #f4ed46;
+    font-size: 30px;
+    font-family: cursive;
+}
+</style>
+</head>
+  
+    
+<body>
+    
+    <h1 id="title"><center>How long is forever?</center></h1>
+    <h2 id="second"><center>Sometimes one second </center></h2>
+<div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+<div id="alignright">
+<img src="https://i1.wp.com/uncorkedcanvas.com/blog/wp-content/uploads/2016/05/Alice-Wonderland.jpg?resize=812%2C1024&ssl=1" width="250" height="300">
+</div>
+    
+<div id="alignleft">
+    <img src="https://ixxidesign.azureedge.net/media/829204/Alice_369_72c.jpg?mode=max&width=562&height=449" width="250" height="300">
+</div>
+    <div align="center">
+    <button onclick="myMessage()"><h2 id="click"><center>click the hidden message box!</center></h2> </button></div>
+
+<form id="form">
+    <h3><center>Are you a fan of Alice in Wonderland?</center></h3>
+    <input type="radio" name="favorite" value="yes" checked> Yes <br>
+    <input type="radio" name="favorite" value="nope" checked> No <br>
+</form> 
+    
+
+    
+<script>
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
+}
+
+showTime();
+    
+function myMessage(){
+    alert("It's no use going back to yesterday, because I was a different person then.");
+}
+    
+</script>
+</body>
+</html>
